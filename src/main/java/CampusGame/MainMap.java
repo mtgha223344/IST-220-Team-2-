@@ -5,12 +5,12 @@
  */
 package CampusGame;
 
+import javax.swing.JPanel;
 
-public class app {
-
-    public static void main(String[] args) {
-        
-        MainFrame mjf = new MainFrame();
-    }
+/**
+ *
+ * @author user
+ */
+public class MainMap extends JPanel{
     
 }
