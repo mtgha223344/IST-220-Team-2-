@@ -59,6 +59,7 @@ public class ControlPanel extends JPanel implements ActionListener {
         mm.game1.addActionListener(this);
         mm.game2.addActionListener(this);
         mm.game3.addActionListener(this);
+        mm.mapReturn.addActionListener(this);
     }
 
     public void CreateComponentsThatWillBeSwapped()
