@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -23,11 +24,11 @@ public class MainMap extends JPanel implements ActionListener {
     //TODO, Catch Scores in MainMap
     //TODO, Create basic GameOver
     //TODO, Implement Character Functionality
-    
+
     Game1 gm1;
     Game2 gm2;
     Game3 gm3;
-    JButton mapReturn, game1, game2, game3, gameOver, testbutton;
+    JButton mapReturn, game1, game2, game3, gameOver, testbutton, timerDisplayField;
     private Character character;
     private Timer timer;
     private int DELAY = 10;
@@ -40,6 +41,7 @@ public class MainMap extends JPanel implements ActionListener {
     String timerDisplayToStringHours;
     boolean isGameStarted = false;
     String StopWatch;
+    ImageIcon universityPark;
 
     public MainMap() {
         super();
@@ -52,26 +54,31 @@ public class MainMap extends JPanel implements ActionListener {
 
         mapReturn = new JButton("Return to Main Menu");     //button to return to IntroScreen
 
-        testbutton = new JButton("Test");
+        universityPark = new ImageIcon(getClass().getResource("/resources/UniversityPark.JPG"));
+        testbutton = new JButton(universityPark);
+        add(testbutton);
 
         game1 = new JButton("Proceed to Game 1?");
         game2 = new JButton("Game 2");
         game3 = new JButton("Game 3");
         gameOver = new JButton("Game Over");
+        timerDisplayField = new JButton();
 
         add(mapReturn);
         add(game1);
         add(game2);
         add(game3);
         add(gameOver);
+        add(timerDisplayField);
 
         mapReturn.setBounds(new Rectangle(450, 375, 150, 35));
-        testbutton.setBounds(new Rectangle(450, 5, 150, 50));
+        testbutton.setBounds(new Rectangle(450, 5, 50, 50));
         game1.setBounds(new Rectangle(200, 300, 150, 50));
         game1.setVisible(false);
         game2.setBounds(new Rectangle(450, 125, 150, 50));
         game3.setBounds(new Rectangle(450, 200, 150, 50));
         gameOver.setBounds(new Rectangle(450, 275, 150, 50));
+        timerDisplayField.setBounds(new Rectangle(0, 525, 110, 40));
 
         addKeyListener(new TAdapter());
         setFocusable(true);
@@ -106,35 +113,34 @@ public class MainMap extends JPanel implements ActionListener {
 
         g2d.drawImage(character.getImage(), character.getX(),
                 character.getY(), this);
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+
         step();
         timerDisplay++;
         UpdateTimerDisplay();
-        
+
     }
-    
-    private void UpdateTimerDisplay(){
-        
+
+    private void UpdateTimerDisplay() {
+
         timerDisplaySeconds = timerDisplay / 100;
-        if (timerDisplaySeconds >= 60)
-        {
-        timerDisplayMinutes ++;
-        timerDisplay = 0;
+        if (timerDisplaySeconds >= 60) {
+            timerDisplayMinutes++;
+            timerDisplay = 0;
         }
-        
-        if (timerDisplayMinutes >= 60)
-        {
-        timerDisplayHours ++;
-        timerDisplayMinutes = timerDisplayMinutes - 60;
+
+        if (timerDisplayMinutes >= 60) {
+            timerDisplayHours++;
+            timerDisplayMinutes = timerDisplayMinutes - 60;
         }
         timerDisplayToStringSeconds = Integer.toString(timerDisplaySeconds);
         timerDisplayToStringMinutes = Integer.toString(timerDisplayMinutes);
         timerDisplayToStringHours = Integer.toString(timerDisplayHours);
-        mapReturn.setText(timerDisplayToStringHours + ":" + timerDisplayMinutes + ":" + timerDisplayToStringSeconds);
+        timerDisplayField.setText("Time: " + timerDisplayToStringHours + ":" + timerDisplayMinutes + ":" + timerDisplayToStringSeconds);
     }
 
     private void step() {

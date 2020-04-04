@@ -17,7 +17,7 @@ public class MainFrame extends JFrame {
         mjp = new ControlPanel();
         add(mjp);                                       //add the control panel to the Main Frame. All other panels will be added to the ControlPanel
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(640, 480);
+        setSize(800, 600);
         setVisible(true);
     }
 
