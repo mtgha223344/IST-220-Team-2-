@@ -28,14 +28,13 @@ public class ControlPanel extends JPanel implements ActionListener {
     Game2 gm2;
     Game3 gm3;
     JButton goTo1, goTo2;
-    Timer tim;
+    int gameScore; //This is the overall game score.
+    String gameScoreToString; //Used for printing the Game Score to the Display in the Main Map
 
     public ControlPanel() {
         super();
         SetUpForControlPanel();
         CreateComponentsThatWillBeSwapped();
-
-        //CreateComponentsThatWillBeSwapped();
     }
 
     public void SetUpForControlPanel() {
@@ -44,13 +43,6 @@ public class ControlPanel extends JPanel implements ActionListener {
         setLayout(border);
         setBackground(Color.gray);
         SetUpIntroScreen();
-
-        intro.setVisible(true);
-        intro.b1.addActionListener(this);       //adds the action listener to each of the 4 buttons in the IntroScreen
-        intro.b2.addActionListener(this);
-        intro.b3.addActionListener(this);
-        intro.b4.addActionListener(this);
-
     }
 
     public void SetUpIntroScreen() {
@@ -62,36 +54,6 @@ public class ControlPanel extends JPanel implements ActionListener {
         intro.b3.addActionListener(this);
         intro.b4.addActionListener(this);
 
-    }
-
-    public void BackToMainMap() {
-        BorderLayout border = new BorderLayout();
-        setLayout(border);
-        setBackground(Color.gray);
-        mm = new MainMap();
-        add(mm);
-        mm.game1.addActionListener(this);
-        mm.game2.addActionListener(this);
-        mm.game3.addActionListener(this);
-        mm.mapReturn.addActionListener(this);
-    }
-
-    public void CreateCreditsandAbout() {
-        ca = new CreditsAndAbout();
-        add(ca);
-        ca.credReturn.addActionListener(this);
-    }
-
-    public void CreateInstructions() {
-        in = new Instructions();                //creates the Instructions panel
-        add(in);
-        in.inReturn.addActionListener(this);
-    }
-
-    public void CreateOptions() {
-        opt = new Options();                //creates the Instructions panel
-        add(opt);
-        opt.optReturn.addActionListener(this);
     }
 
     public void CreateMainMap() {
@@ -107,6 +69,7 @@ public class ControlPanel extends JPanel implements ActionListener {
         gm1 = new Game1();                //creates game1
         add(gm1);
         gm1.b1.addActionListener(this);
+        gm1.testButton.addActionListener(this);
     }
 
     public void CreateGame2() {
@@ -241,6 +204,12 @@ public class ControlPanel extends JPanel implements ActionListener {
             mm.setVisible(true);//rebuild the original ControlPanel again
             validate();
             repaint();
+        }
+
+        if (obj == gm1.testButton) {
+            gameScore++;
+            gameScoreToString = Integer.toString(gameScore);
+            mm.scoreDisplayField.setText(gameScoreToString);
         }
 
     }

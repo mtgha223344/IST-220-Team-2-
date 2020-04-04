@@ -71,7 +71,7 @@ public class Character {
 
     public void keyPressed(KeyEvent e) {
 
-        System.out.println("key pressed");
+        
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {

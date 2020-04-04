@@ -24,10 +24,16 @@ import javax.swing.Timer;
  */
 public class Game1 extends JPanel implements ActionListener{
     
-    JButton b1;
+    JButton b1, testButton;
     private Character character;
     public Timer timer;
     private int DELAY = 10;
+    private int score;
+
+    //score getter
+    public int getScore() {
+        return score;
+    }
     
     public Game1()
     {
@@ -35,6 +41,12 @@ public class Game1 extends JPanel implements ActionListener{
         setBackground(Color.RED);
         b1 = new JButton("Game 1 will be here");
         add(b1);
+        
+        testButton = new JButton("Press here for score");
+        add(b1);
+        add(testButton);
+        
+        testButton.setBounds(new Rectangle(450, 375, 150, 35));
         
         addKeyListener(new TAdapter());
         setFocusable(true);
@@ -45,9 +57,10 @@ public class Game1 extends JPanel implements ActionListener{
         timer.start();
     }
     
+    @Override
     public void paintComponent(Graphics g)
     {
-super.paintComponent(g);
+        super.paintComponent(g);
         
         setBackground(Color.white);
         doDrawing(g);
@@ -71,6 +84,12 @@ super.paintComponent(g);
     
     @Override
     public void actionPerformed(ActionEvent e) {
+        Object obj = e.getSource();
+        if (obj == testButton)
+        {
+            score++;
+            //System.out.println(score);
+        }
         step();
     }
     
