@@ -27,7 +27,7 @@ public class Character {
 
     private void loadImage() {
         
-        ImageIcon ii = new ImageIcon("D:/user/Repos/NetBeans Projects/Campus Game/Campus Game/src/resources/icon.JPG");
+        ImageIcon ii = new ImageIcon(getClass().getResource("/resources/icon.JPG"));
         image = ii.getImage(); 
         
         width = image.getWidth(null);

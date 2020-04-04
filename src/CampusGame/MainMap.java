@@ -110,16 +110,31 @@ public class MainMap extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        
+        step();
         timerDisplay++;
-        //TODO Refactor This 
+        UpdateTimerDisplay();
+        
+    }
+    
+    private void UpdateTimerDisplay(){
+        
         timerDisplaySeconds = timerDisplay / 100;
-        timerDisplayMinutes = timerDisplaySeconds / 60;
-        timerDisplayHours = timerDisplayMinutes / 60;
+        if (timerDisplaySeconds >= 60)
+        {
+        timerDisplayMinutes ++;
+        timerDisplay = 0;
+        }
+        
+        if (timerDisplayMinutes >= 60)
+        {
+        timerDisplayHours ++;
+        timerDisplayMinutes = timerDisplayMinutes - 60;
+        }
         timerDisplayToStringSeconds = Integer.toString(timerDisplaySeconds);
         timerDisplayToStringMinutes = Integer.toString(timerDisplayMinutes);
         timerDisplayToStringHours = Integer.toString(timerDisplayHours);
         mapReturn.setText(timerDisplayToStringHours + ":" + timerDisplayMinutes + ":" + timerDisplayToStringSeconds);
-        step();
     }
 
     private void step() {
