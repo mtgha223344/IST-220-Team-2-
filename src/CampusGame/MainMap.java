@@ -97,6 +97,7 @@ public class MainMap extends JPanel implements ActionListener {
         game2.setVisible(false);
         game3.setBounds(new Rectangle(600, 50, 150, 50));
         game3.setVisible(false);
+        game3.setBackground(Color.RED);
         gameOver.setBounds(new Rectangle(450, 275, 150, 50));
         gameOver.setVisible(false);
         timerDisplayField.setBounds(new Rectangle(0, 525, 110, 40));
@@ -199,6 +200,7 @@ public class MainMap extends JPanel implements ActionListener {
 
         Rectangle r2 = universityParkIcon.getBounds();
         Rectangle r4 = worldCampusIcon.getBounds();
+        Rectangle r5 = scrantonIcon.getBounds();
 
         if (r3.intersects(r2)) {
             game1.setVisible(true);
@@ -206,10 +208,15 @@ public class MainMap extends JPanel implements ActionListener {
         {
             game2.setVisible(true);
         }
+        else if (r3.intersects(r5))
+        {
+            game3.setVisible(true);
+        }
         else
         {
             game1.setVisible(false);
             game2.setVisible(false);
+            game3.setVisible(false);
         }
     }
 
