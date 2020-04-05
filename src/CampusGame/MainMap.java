@@ -26,13 +26,13 @@ public class MainMap extends JPanel implements ActionListener {
     Game1 gm1;
     Game2 gm2;
     Game3 gm3;
-    protected JButton mapReturn, game1, game2, game3, gameOver, universityParkIcon, behrendIcon, worldCampusIcon, abingtonIcon, duBoisIcon, timerDisplayField, scoreDisplayField;
+    protected JButton mapReturn, game1, game2, game3, gameOver, universityParkIcon, worldCampusIcon, abingtonIcon, scrantonIcon, duBoisIcon, timerDisplayField, scoreDisplayField;
     private Character character;
     private Timer timer;
     private int timerDisplay = 0, timerDisplaySeconds = 0, timerDisplayMinutes = 0, timerDisplayHours = 0,DELAY = 10;
     boolean isGameStarted = false;
     private String timerDisplayToStringSeconds, timerDisplayToStringMinutes, timerDisplayToStringHours;
-    private ImageIcon behrend, universityPark, worldCampus, abington, duBois; 
+    private ImageIcon scranton, universityPark, worldCampus, abington, duBois; 
     private Image background;
 
     public MainMap() {
@@ -49,6 +49,7 @@ public class MainMap extends JPanel implements ActionListener {
         worldCampus = new ImageIcon(getClass().getResource("/resources/WorldCampus.JPG"));
         abington = new ImageIcon(getClass().getResource("/resources/Abington.JPG"));
         duBois = new ImageIcon(getClass().getResource("/resources/DuBois.JPG"));
+        scranton = new ImageIcon(getClass().getResource("/resources/Scranton.JPG"));
 
         //Paints the Background
         background = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/resources/Background.JPG"));
@@ -58,6 +59,7 @@ public class MainMap extends JPanel implements ActionListener {
         worldCampusIcon = new JButton(worldCampus);
         abingtonIcon = new JButton(abington);
         duBoisIcon = new JButton(duBois);
+        scrantonIcon = new JButton(scranton);
         mapReturn = new JButton("Return to Main Menu");     //button to return to IntroScreen
         game1 = new JButton("Proceed to Game 1?");
         game2 = new JButton("Game 2");
@@ -72,6 +74,7 @@ public class MainMap extends JPanel implements ActionListener {
         add(worldCampusIcon);
         add(abingtonIcon);
         add(duBoisIcon);
+        add(scrantonIcon);
         add(game1);
         add(game2);
         add(game3);
@@ -85,9 +88,12 @@ public class MainMap extends JPanel implements ActionListener {
         worldCampusIcon.setBounds(new Rectangle(300, 80, 125, 50));
         abingtonIcon.setBounds(new Rectangle(720, 388, 50, 50));
         duBoisIcon.setBounds(new Rectangle(222, 190, 50, 50));
+        scrantonIcon.setBounds(new Rectangle(640, 150, 50, 50));
         game1.setBounds(new Rectangle(600, 50, 150, 50));
+        game1.setBackground(Color.RED);
         game1.setVisible(false);
         game2.setBounds(new Rectangle(600, 50, 150, 50));
+        game2.setBackground(Color.RED);
         game2.setVisible(false);
         game3.setBounds(new Rectangle(600, 50, 150, 50));
         game3.setVisible(false);
@@ -108,6 +114,11 @@ public class MainMap extends JPanel implements ActionListener {
         timer = new Timer(DELAY, this);
         timer.start();
         isGameStarted = true; // verifies that the game is started
+    }
+    
+    //used for the game over functionality
+    public void stopTimer() {
+        timer.stop();
     }
 
     @Override
