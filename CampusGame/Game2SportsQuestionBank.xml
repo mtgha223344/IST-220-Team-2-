@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_221" class="java.beans.XMLDecoder">
+ <string>Which bowl game did Penn State go to in the 1986 season?</string>
+ <string>Rose Bowl</string>
+ <string>Fiesta Bowl</string>
+ <string>Holiday Bowl</string>
+ <string>Under Coach Joe Paterno (1966-2011), the Penn State Nittany Lions were awarded how many national championships?</string>
+ <string>1</string>
+ <string>2</string>
+ <string>4</string>
+ <string>True or False, Penn State has won every Sugar Bowl they have gone to under Coach Joe Paterno&apos;s record.</string>
+ <string>True</string>
+ <string>False</string>
+ <string>Which season was Penn State football’s first as a member of the Big Ten Conference?</string>
+ <string>1996</string>
+ <string>1987</string>
+ <string>1993</string>
+ <string>In 2019, the Penn State Nittany lions played again which team in the Cotton Bowl?</string>
+ <string>Memphis</string>
+ <string>Kentucky</string>
+ <string>Washington</string>
+</java>
