@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_221" class="java.beans.XMLDecoder">
+ <string>What is the capital of Pennsylvania?</string>
+ <string>Harrisburg</string>
+ <string>Philadelphia</string>
+ <string>Lancaster</string>
+ <string>Pennsylvania is known as the…</string>
+ <string>State of Brotherly Love</string>
+ <string>Freedom State</string>
+ <string>Keystone State </string>
+ <string>Which Pennsylvania city housed the first computer in 1946?</string>
+ <string>Pittsburg</string>
+ <string>Philadelphia</string>
+ <string>Reading</string>
+ <string>In 1909 the first baseball stadium was built in which Pennsylvania city?</string>
+ <string>Philadelphia</string>
+ <string>Allentown</string>
+ <string>Pittsburg</string>
+ <string>Which county in Pennsylvania is known as the Christmas Tree capital of the world?</string>
+ <string>Adams County</string>
+ <string>Allegheny County</string>
+ <string>Indiana County</string>
+</java>
