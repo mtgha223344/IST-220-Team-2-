@@ -17,10 +17,6 @@ import javax.swing.JPanel;
 import java.awt.Image;
 
 public class MainMap extends JPanel implements ActionListener {
-    //TODO, Create Independent Displays for Timer and Score
-    //TODO, Create Graphics for MainMap
-    //TODO, Catch Scores in MainMap
-    //TODO, Create basic GameOver
     //TODO, Implement Character Functionality
 
     Game1 gm1;
@@ -28,9 +24,10 @@ public class MainMap extends JPanel implements ActionListener {
     Game3 gm3;
     protected JButton mapReturn, game1, game2, game3, gameOver, universityParkIcon, worldCampusIcon, abingtonIcon, scrantonIcon, duBoisIcon, timerDisplayField, scoreDisplayField;
     private Character character;
+    private Student student;
     private Timer timer;
     private int timerDisplay = 0, timerDisplaySeconds = 0, timerDisplayMinutes = 0, timerDisplayHours = 0,DELAY = 10;
-    boolean isGameStarted = false;
+    boolean isGameStarted = false, isCharacterSelected = true, hasGame1BeenPlayed;
     private String timerDisplayToStringSeconds, timerDisplayToStringMinutes, timerDisplayToStringHours;
     private ImageIcon scranton, universityPark, worldCampus, abington, duBois; 
     private Image background;
@@ -107,7 +104,9 @@ public class MainMap extends JPanel implements ActionListener {
         addKeyListener(new TAdapter());
         setFocusable(true);
 
-        character = new Character();
+        
+        SetUpCharacter();
+        
 
     }
 
@@ -120,6 +119,14 @@ public class MainMap extends JPanel implements ActionListener {
     //used for the game over functionality
     public void stopTimer() {
         timer.stop();
+    }
+    
+    public void SetUpCharacter(){
+        if (isCharacterSelected ==  true)
+        {
+            character = new Character();System.out.println("Character created in Main Map");;
+        }
+        else { student = new Student(); System.out.println("Student created in Main Map");}
     }
 
     @Override
@@ -142,8 +149,14 @@ public class MainMap extends JPanel implements ActionListener {
 
         g.drawImage(background, 0, 0, null);
 
+        if (isCharacterSelected == true){
         g2d.drawImage(character.getImage(), character.getX(),
                 character.getY(), this);
+        }
+        else if (isCharacterSelected == false){
+        g2d.drawImage(student.getImage(), student.getX(),
+                student.getY(), this);
+        }
 
     }
 
@@ -176,7 +189,12 @@ public class MainMap extends JPanel implements ActionListener {
 
     private void step() {
 
+        if (isCharacterSelected == true){
         character.move();
+        }
+        else if (isCharacterSelected == false){
+        student.move();
+        }
         checkCollisions();
         repaint();
     }
@@ -185,16 +203,27 @@ public class MainMap extends JPanel implements ActionListener {
 
         @Override
         public void keyReleased(KeyEvent e) {
-            character.keyReleased(e);
+            
+            if (isCharacterSelected == true){
+        character.keyReleased(e);
+        }
+            else if (isCharacterSelected == false){
+        student.keyReleased(e);
+        }
         }
 
         @Override
         public void keyPressed(KeyEvent e) {
-            character.keyPressed(e);
+            if (isCharacterSelected == true){
+        character.keyPressed(e);
+        }
+            else if (isCharacterSelected == false){
+        student.keyPressed(e);
+        }
         }
     }
 
-    public void checkCollisions() {
+     public void checkCollisions() {
 
         Rectangle r3 = character.getBounds();
 
@@ -202,7 +231,7 @@ public class MainMap extends JPanel implements ActionListener {
         Rectangle r4 = worldCampusIcon.getBounds();
         Rectangle r5 = scrantonIcon.getBounds();
 
-        if (r3.intersects(r2)) {
+        if (r3.intersects(r2) && hasGame1BeenPlayed == false) {
             game1.setVisible(true);
         } else if (r3.intersects(r4))
         {
@@ -219,5 +248,6 @@ public class MainMap extends JPanel implements ActionListener {
             game3.setVisible(false);
         }
     }
+
 
 }

@@ -21,11 +21,10 @@ public class Character {
     private Image image;
 
     public Character() {
-
         loadImage();
     }
 
-    private void loadImage() {
+ private void loadImage() {
         
         ImageIcon ii = new ImageIcon(getClass().getResource("/resources/icon.JPG"));
         image = ii.getImage(); 

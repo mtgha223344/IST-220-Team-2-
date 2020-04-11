@@ -11,7 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.Timer;
 
 /**
  **The Control Panel will listen to events and based on those events, it will
@@ -57,20 +56,11 @@ public class ControlPanel extends JPanel implements ActionListener {
 
     }
 
-    public void CreateMainMap() {
-        mm = new MainMap();                //creates the Instructions panel
-        add(mm);
-        mm.mapReturn.addActionListener(this);   //attach listener to the Return button in the MainMap panel  
-        mm.game1.addActionListener(this);
-        mm.game2.addActionListener(this);
-        mm.game3.addActionListener(this);
-    }
-
     public void CreateGame1() {
         gm1 = new Game1();                //creates game1
         add(gm1);
-        gm1.b1.addActionListener(this);
-        gm1.testButton.addActionListener(this);
+        gm1.returnToMainMap.addActionListener(this);
+
     }
 
     public void CreateGame2() {
@@ -103,7 +93,7 @@ public class ControlPanel extends JPanel implements ActionListener {
         mm.game2.addActionListener(this);
         mm.game3.addActionListener(this);
         gm1 = new Game1();
-        gm1.b1.addActionListener(this);         //attach listener to the Game1 button in the Game1 panel
+        gm1.returnToMainMap.addActionListener(this);         //attach listener to the Game1 button in the Game1 panel
         gm2 = new Game2();
         gm2.b1.addActionListener(this);         //attach listener to the Game2 button in the Game2 panel
         gm3 = new Game3();
@@ -188,6 +178,7 @@ public class ControlPanel extends JPanel implements ActionListener {
         {
             mm.setVisible(false);
             CreateGame1();
+            mm.hasGame1BeenPlayed = true;
             validate();
             repaint();
         }
@@ -206,13 +197,16 @@ public class ControlPanel extends JPanel implements ActionListener {
             repaint();
         }
         //This will navigate back to the IntroScreen. Needs to navigate back to MainMap
-        if (obj == gm1.b1) {
+        if (obj == gm1.returnToMainMap) {
             gm1.setVisible(false);
-            gm1.timer.stop();
+            gameScore = gm1.score;
+            mm.scoreDisplayField.setText(gm1.scoreToString);
             mm.setVisible(true); //rebuild the original ControlPanel again
             validate();
             repaint();
         }
+        
+        
         if (obj == gm2.b1) {
             gm2.setVisible(false);
             mm.setVisible(true); //rebuild the original ControlPanel again
@@ -226,12 +220,12 @@ public class ControlPanel extends JPanel implements ActionListener {
             repaint();
         }
 
-        if (obj == gm1.testButton) {
+        /*if (obj == gm1.testButton) {
             gameScore++;
             gameScoreToString = Integer.toString(gameScore);
             mm.scoreDisplayField.setText(gameScoreToString);
         }
-
+        */
     }
 
 }
