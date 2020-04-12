@@ -32,13 +32,15 @@ public class ControlPanel extends JPanel implements ActionListener {
     int gameScore; //This is the overall game score.
     String gameScoreToString; //Used for printing the Game Score to the Display in the Main Map
 
-    public ControlPanel() {
+    public ControlPanel()
+    {
         super();
         SetUpForControlPanel();
         CreateComponentsThatWillBeSwapped();
     }
 
-    public void SetUpForControlPanel() {
+    public void SetUpForControlPanel()
+    {
         //The listeners for the navigation will need to be implemented here
         BorderLayout border = new BorderLayout();
         setLayout(border);
@@ -46,7 +48,8 @@ public class ControlPanel extends JPanel implements ActionListener {
         SetUpIntroScreen();
     }
 
-    public void SetUpIntroScreen() {
+    public void SetUpIntroScreen()
+    {
         intro = new IntroScreen();
 
         add(intro, "Center");
@@ -57,7 +60,8 @@ public class ControlPanel extends JPanel implements ActionListener {
 
     }
 
-    public void CreateMainMap() {
+    public void CreateMainMap()
+    {
         mm = new MainMap();                //creates the Instructions panel
         add(mm);
         mm.mapReturn.addActionListener(this);   //attach listener to the Return button in the MainMap panel  
@@ -66,31 +70,37 @@ public class ControlPanel extends JPanel implements ActionListener {
         mm.game3.addActionListener(this);
     }
 
-    public void CreateGame1() {
+    public void CreateGame1()
+    {
         gm1 = new Game1();                //creates game1
         add(gm1);
         gm1.b1.addActionListener(this);
         gm1.testButton.addActionListener(this);
     }
 
-    public void CreateGame2() {
+    public void CreateGame2()
+    {
         gm2 = new Game2();                //creates game2
         add(gm2);
         gm2.b1.addActionListener(this);
     }
 
-    public void CreateGame3() {
-        gm3 = new Game3();                //creates game2
+    public void CreateGame3()
+    {
+        gm3 = new Game3();                //creates game3
         add(gm3);
         gm3.b1.addActionListener(this);
-    }
-    
-    public void GameOver() {
-
-            mm.stopTimer();
+        gm3.b2.addActionListener(this);
     }
 
-    public void CreateComponentsThatWillBeSwapped() {
+    public void GameOver()
+    {
+
+        mm.stopTimer();
+    }
+
+    public void CreateComponentsThatWillBeSwapped()
+    {
         ca = new CreditsAndAbout();             //creates the CreditsAndAbout panel    
         ca.credReturn.addActionListener(this);  //attach listener to the Return button in the CreditsAndAbout panel
         in = new Instructions();                //creates the Instructions panel
@@ -112,23 +122,23 @@ public class ControlPanel extends JPanel implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e)
+    {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         Object obj = e.getSource();
-        
 
         if (gameScore >= 20) //test Game Over Functionality here. Eventually should respond to actual game over event. 
         {
 
-        //Here there is no Action Event object so the Control Panel continually queries for the game over condition
-        //Will probably respond to a variable numberOfGamesPlayed which will iterate each time a game button is clicked
+            //Here there is no Action Event object so the Control Panel continually queries for the game over condition
+            //Will probably respond to a variable numberOfGamesPlayed which will iterate each time a game button is clicked
             GameOver();
             removeAll();
             add(gameOver);
             validate();
             repaint();
         }
-        
+
         if (obj == intro.b1) //adds the CreditsAndAbout panel
         {
             remove(intro);
@@ -154,31 +164,36 @@ public class ControlPanel extends JPanel implements ActionListener {
         {
             remove(intro);
             add(mm);
-            if (mm.isGameStarted == false) {
+            if (mm.isGameStarted == false)
+            {
                 mm.startTimer();
             }
             validate();
             repaint();
         }
-        if (obj == ca.credReturn) {
+        if (obj == ca.credReturn)
+        {
             remove(ca);
             add(intro);
             validate();
             repaint();
         }
-        if (obj == in.inReturn) {
+        if (obj == in.inReturn)
+        {
             remove(in);
             add(intro);
             validate();
             repaint();
         }
-        if (obj == opt.optReturn) {
+        if (obj == opt.optReturn)
+        {
             remove(opt);
             add(intro);
             validate();
             repaint();
         }
-        if (obj == mm.mapReturn) {
+        if (obj == mm.mapReturn)
+        {
             remove(mm);
             add(intro);
             validate();
@@ -206,27 +221,31 @@ public class ControlPanel extends JPanel implements ActionListener {
             repaint();
         }
         //This will navigate back to the IntroScreen. Needs to navigate back to MainMap
-        if (obj == gm1.b1) {
+        if (obj == gm1.b1)
+        {
             gm1.setVisible(false);
             gm1.timer.stop();
             mm.setVisible(true); //rebuild the original ControlPanel again
             validate();
             repaint();
         }
-        if (obj == gm2.b1) {
+        if (obj == gm2.b1)
+        {
             gm2.setVisible(false);
             mm.setVisible(true); //rebuild the original ControlPanel again
             validate();
             repaint();
         }
-        if (obj == gm3.b1) {
+        if (obj == gm3.b1)
+        {
             gm3.setVisible(false);
             mm.setVisible(true);//rebuild the original ControlPanel again
             validate();
             repaint();
         }
 
-        if (obj == gm1.testButton) {
+        if (obj == gm1.testButton)
+        {
             gameScore++;
             gameScoreToString = Integer.toString(gameScore);
             mm.scoreDisplayField.setText(gameScoreToString);
