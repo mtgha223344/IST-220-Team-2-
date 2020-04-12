@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package CampusGame;
 
 import java.awt.BorderLayout;
@@ -28,7 +23,7 @@ public class ControlPanel extends JPanel implements ActionListener {
     Game3 gm3;
     GameOver gameOver;
     JButton goTo1, goTo2;
-    int gameScore; //This is the overall game score.
+    int gameScore, gamesPlayed = 0; //This is the overall game score.
     String gameScoreToString; //Used for printing the Game Score to the Display in the Main Map
 
     public ControlPanel() {
@@ -74,10 +69,10 @@ public class ControlPanel extends JPanel implements ActionListener {
         add(gm3);
         gm3.b1.addActionListener(this);
     }
-    
+
     public void GameOver() {
 
-            mm.stopTimer();
+        mm.stopTimer();
     }
 
     public void CreateComponentsThatWillBeSwapped() {
@@ -99,26 +94,25 @@ public class ControlPanel extends JPanel implements ActionListener {
         gm3 = new Game3();
         gm3.b1.addActionListener(this);         //attach listener to the Game3 button in the Game3 panel
         gameOver = new GameOver();
+        gameOver.restart.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         Object obj = e.getSource();
-        
 
-        /*if (gameScore >= 20) //test Game Over Functionality here. Eventually should respond to actual game over event. 
+        if (mm.gamesPlayed == 3) //test Game Over Functionality here. Eventually should respond to actual game over event. 
         {
 
-        //Here there is no Action Event object so the Control Panel continually queries for the game over condition
-        //Will probably respond to a variable numberOfGamesPlayed which will iterate each time a game button is clicked
+            //Here there is no Action Event object so the Control Panel continually queries for the game over condition
+            //Will probably respond to a variable numberOfGamesPlayed which will iterate each time a game button is clicked
             GameOver();
             removeAll();
             add(gameOver);
             validate();
             repaint();
         }
-        */
         if (obj == intro.b1) //adds the CreditsAndAbout panel
         {
             remove(intro);
@@ -179,6 +173,7 @@ public class ControlPanel extends JPanel implements ActionListener {
             mm.setVisible(false);
             CreateGame1();
             mm.hasGame1BeenPlayed = true;
+            mm.gamesPlayed++;
             validate();
             repaint();
         }
@@ -186,6 +181,8 @@ public class ControlPanel extends JPanel implements ActionListener {
         {
             mm.setVisible(false);
             CreateGame2();
+            mm.hasGame2BeenPlayed = true;
+            mm.gamesPlayed++;
             validate();
             repaint();
         }
@@ -193,6 +190,8 @@ public class ControlPanel extends JPanel implements ActionListener {
         {
             mm.setVisible(false);
             CreateGame3();
+            mm.hasGame3BeenPlayed = true;
+            mm.gamesPlayed++;
             validate();
             repaint();
         }
@@ -201,15 +200,17 @@ public class ControlPanel extends JPanel implements ActionListener {
             gm1.setVisible(false);
             gameScore = gameScore + gm1.score;
             gameScoreToString = Integer.toString(gameScore);
-            mm.scoreDisplayField.setText(gm1.scoreToString);
+            mm.scoreDisplayField.setText("Score: " + gameScoreToString);
             mm.setVisible(true); //rebuild the original ControlPanel again
             validate();
             repaint();
         }
-        
-        
+
         if (obj == gm2.b1) {
             gm2.setVisible(false);
+            gameScore = gameScore + gm2.score;
+            gameScoreToString = Integer.toString(gameScore);
+            mm.scoreDisplayField.setText("Score: " + gameScoreToString);
             mm.setVisible(true); //rebuild the original ControlPanel again
             validate();
             repaint();
@@ -218,8 +219,16 @@ public class ControlPanel extends JPanel implements ActionListener {
             gm3.setVisible(false);
             gameScore = gameScore + gm3.score;
             gameScoreToString = Integer.toString(gameScore);
-            mm.scoreDisplayField.setText(gameScoreToString);
+            mm.scoreDisplayField.setText("Score: " + gameScoreToString);
             mm.setVisible(true);//rebuild the original ControlPanel again
+            validate();
+            repaint();
+        }
+
+        if (obj == gameOver.restart) {
+            removeAll();
+            SetUpForControlPanel();
+            CreateComponentsThatWillBeSwapped();
             validate();
             repaint();
         }

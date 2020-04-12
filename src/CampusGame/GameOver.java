@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 
 public class GameOver extends JPanel {
     
-        JButton finalScore;
+        JButton restart;
         JButton finalTime;
     
     public GameOver(){
@@ -20,10 +20,10 @@ public class GameOver extends JPanel {
         super();
         setBackground(Color.white);
         setLayout(null);
-        finalScore = new JButton();  //button to return to IntroScreen
-        add(finalScore);
+        restart = new JButton("Start Over.");  //button to return to IntroScreen
+        add(restart);
         
-        finalScore.setBounds(new Rectangle(450,375,150,35));
+        restart.setBounds(new Rectangle(450,375,150,35));
     }
     
     public void paintComponent(Graphics g)
@@ -32,6 +32,7 @@ public class GameOver extends JPanel {
         Font f1 = new Font("Serif", Font.BOLD, 16);
         g.setFont(f1);
         g.setColor(Color.BLUE);
-        g.drawString("This will be the game over screen.", 25, 100);
+        g.drawString("This will be the game over screen. Currently if all three games are visited this panel will be triggered.", 25, 100);
+        g.drawString("Eventually this will display final score and time.", 25, 150);
     }
 }

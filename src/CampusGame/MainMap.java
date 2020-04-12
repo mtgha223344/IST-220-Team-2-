@@ -27,10 +27,11 @@ public class MainMap extends JPanel implements ActionListener {
     private Student student;
     private Timer timer;
     private int timerDisplay = 0, timerDisplaySeconds = 0, timerDisplayMinutes = 0, timerDisplayHours = 0,DELAY = 10;
-    boolean isGameStarted = false, isCharacterSelected = true, hasGame1BeenPlayed;
+    boolean isGameStarted = false, isCharacterSelected = true, hasGame1BeenPlayed = false, hasGame2BeenPlayed = false, hasGame3BeenPlayed = false;
     private String timerDisplayToStringSeconds, timerDisplayToStringMinutes, timerDisplayToStringHours;
     private ImageIcon scranton, universityPark, worldCampus, abington, duBois; 
     private Image background;
+    protected int gamesPlayed = 0;
 
     public MainMap() {
         super();
@@ -59,8 +60,8 @@ public class MainMap extends JPanel implements ActionListener {
         scrantonIcon = new JButton(scranton);
         mapReturn = new JButton("Return to Main Menu");     //button to return to IntroScreen
         game1 = new JButton("Proceed to Game 1?");
-        game2 = new JButton("Game 2");
-        game3 = new JButton("Game 3");
+        game2 = new JButton("Proceed to Game 2?");
+        game3 = new JButton("Proceed to Game 3?");
         gameOver = new JButton("Game Over");
         timerDisplayField = new JButton();
         scoreDisplayField = new JButton();
@@ -233,11 +234,11 @@ public class MainMap extends JPanel implements ActionListener {
 
         if (r3.intersects(r2) && hasGame1BeenPlayed == false) {
             game1.setVisible(true);
-        } else if (r3.intersects(r4))
+        } else if (r3.intersects(r4) && hasGame2BeenPlayed == false)
         {
             game2.setVisible(true);
         }
-        else if (r3.intersects(r5))
+        else if (r3.intersects(r5) && hasGame3BeenPlayed == false)
         {
             game3.setVisible(true);
         }
