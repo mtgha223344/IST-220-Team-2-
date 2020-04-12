@@ -107,7 +107,7 @@ public class ControlPanel extends JPanel implements ActionListener {
         Object obj = e.getSource();
         
 
-        if (gameScore >= 20) //test Game Over Functionality here. Eventually should respond to actual game over event. 
+        /*if (gameScore >= 20) //test Game Over Functionality here. Eventually should respond to actual game over event. 
         {
 
         //Here there is no Action Event object so the Control Panel continually queries for the game over condition
@@ -118,7 +118,7 @@ public class ControlPanel extends JPanel implements ActionListener {
             validate();
             repaint();
         }
-        
+        */
         if (obj == intro.b1) //adds the CreditsAndAbout panel
         {
             remove(intro);
@@ -199,7 +199,8 @@ public class ControlPanel extends JPanel implements ActionListener {
         //This will navigate back to the IntroScreen. Needs to navigate back to MainMap
         if (obj == gm1.returnToMainMap) {
             gm1.setVisible(false);
-            gameScore = gm1.score;
+            gameScore = gameScore + gm1.score;
+            gameScoreToString = Integer.toString(gameScore);
             mm.scoreDisplayField.setText(gm1.scoreToString);
             mm.setVisible(true); //rebuild the original ControlPanel again
             validate();
@@ -215,17 +216,14 @@ public class ControlPanel extends JPanel implements ActionListener {
         }
         if (obj == gm3.b1) {
             gm3.setVisible(false);
+            gameScore = gameScore + gm3.score;
+            gameScoreToString = Integer.toString(gameScore);
+            mm.scoreDisplayField.setText(gameScoreToString);
             mm.setVisible(true);//rebuild the original ControlPanel again
             validate();
             repaint();
         }
 
-        /*if (obj == gm1.testButton) {
-            gameScore++;
-            gameScoreToString = Integer.toString(gameScore);
-            mm.scoreDisplayField.setText(gameScoreToString);
-        }
-        */
     }
 
 }
