@@ -28,7 +28,7 @@ public class Character {
         
         ImageIcon ii = new ImageIcon(getClass().getResource("/resources/icon.JPG"));
         image = ii.getImage(); 
-        
+        System.out.println("Character Image Called");
         width = image.getWidth(null);
         height = image.getHeight(null);
     }

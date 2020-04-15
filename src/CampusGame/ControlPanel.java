@@ -76,23 +76,34 @@ public class ControlPanel extends JPanel implements ActionListener {
     }
 
     public void CreateComponentsThatWillBeSwapped() {
+        
         ca = new CreditsAndAbout();             //creates the CreditsAndAbout panel    
         ca.credReturn.addActionListener(this);  //attach listener to the Return button in the CreditsAndAbout panel
+        
         in = new Instructions();                //creates the Instructions panel
         in.inReturn.addActionListener(this);    //attach listener to the Return button in the Instructions panel
+        
         opt = new Options();                    //creates the Options panel
         opt.optReturn.addActionListener(this);  //attach listener to the Return button in the Options panel
+        opt.them1.addActionListener(this);
+        opt.them2.addActionListener(this);
+        opt.them3.addActionListener(this);
+        
         mm = new MainMap();
         mm.mapReturn.addActionListener(this);   //attach listener to the Return button in the MainMap panel  
         mm.game1.addActionListener(this);
         mm.game2.addActionListener(this);
         mm.game3.addActionListener(this);
+        
         gm1 = new Game1();
         gm1.returnToMainMap.addActionListener(this);         //attach listener to the Game1 button in the Game1 panel
+        
         gm2 = new Game2();
         gm2.b1.addActionListener(this);         //attach listener to the Game2 button in the Game2 panel
+        
         gm3 = new Game3();
         gm3.b1.addActionListener(this);         //attach listener to the Game3 button in the Game3 panel
+        
         gameOver = new GameOver();
         gameOver.restart.addActionListener(this);
     }
@@ -161,6 +172,30 @@ public class ControlPanel extends JPanel implements ActionListener {
             add(intro);
             validate();
             repaint();
+        }
+        if (obj == opt.them1) {
+            opt.isTheme1Selected = true;
+            opt.isTheme2Selected = false;
+            opt.isTheme3Selected = false;
+            validate();
+            repaint();
+            
+        }
+        if (obj == opt.them2) {
+            opt.isTheme2Selected = true;
+            opt.isTheme1Selected = false;
+            opt.isTheme3Selected = false;
+            
+            validate();
+            repaint();   
+        }
+        if (obj == opt.them3) {
+            opt.isTheme3Selected = true;
+            opt.isTheme2Selected = false;
+            opt.isTheme1Selected = false;
+            
+            validate();
+            repaint();   
         }
         if (obj == mm.mapReturn) {
             remove(mm);

@@ -27,10 +27,10 @@ public class MainMap extends JPanel implements ActionListener {
     private Student student;
     private Timer timer;
     private int timerDisplay = 0, timerDisplaySeconds = 0, timerDisplayMinutes = 0, timerDisplayHours = 0,DELAY = 10;
-    boolean isGameStarted = false, isCharacterSelected = true, hasGame1BeenPlayed = false, hasGame2BeenPlayed = false, hasGame3BeenPlayed = false;
+    boolean isTheme2Selected = false, isGameStarted = false, isCharacterSelected = true, hasGame1BeenPlayed = false, hasGame2BeenPlayed = false, hasGame3BeenPlayed = false;
     private String timerDisplayToStringSeconds, timerDisplayToStringMinutes, timerDisplayToStringHours;
     private ImageIcon scranton, universityPark, worldCampus, abington, duBois; 
-    private Image background;
+    private Image background, testBackground;
     protected int gamesPlayed = 0;
 
     public MainMap() {
@@ -49,8 +49,9 @@ public class MainMap extends JPanel implements ActionListener {
         duBois = new ImageIcon(getClass().getResource("/resources/DuBois.JPG"));
         scranton = new ImageIcon(getClass().getResource("/resources/Scranton.JPG"));
 
-        //Paints the Background
+        //creates the background to be painted
         background = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/resources/Background.JPG"));
+        testBackground = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/resources/testBackground.JPG"));
 
         //Creates all of the buttons and assigns Icons to them
         universityParkIcon = new JButton(universityPark);
@@ -105,7 +106,6 @@ public class MainMap extends JPanel implements ActionListener {
         addKeyListener(new TAdapter());
         setFocusable(true);
 
-        
         SetUpCharacter();
         
 
@@ -148,7 +148,15 @@ public class MainMap extends JPanel implements ActionListener {
 
         Graphics2D g2d = (Graphics2D) g;
 
+
+        
+        if (isTheme2Selected == true)
+        {
+             g.drawImage(testBackground, 0, 0, null);
+        }
+        else{
         g.drawImage(background, 0, 0, null);
+        }
 
         if (isCharacterSelected == true){
         g2d.drawImage(character.getImage(), character.getX(),
