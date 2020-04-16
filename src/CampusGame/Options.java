@@ -22,9 +22,9 @@ import javax.swing.JPanel;
  */
 public class Options extends JPanel{
     
-    boolean isTheme1Selected = false, isTheme2Selected = false, isTheme3Selected = false;
+    boolean isStudentSelected = true, isMascotSelected = false, isProfessorSelected = false, isTheme1Selected = false, isTheme2Selected = false, isTheme3Selected = false;
     JButton optReturn, char1, char2, char3, them1, them2, them3;
-    private Image defaultBackground, computersBackground, sportsBackground;
+    private final Image studentIcon, professorIcon, mascotIcon, defaultBackground, computersBackground, sportsBackground;
     
     public Options(){
         super();
@@ -34,6 +34,10 @@ public class Options extends JPanel{
         defaultBackground = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/resources/pennStateBackground.JPG"));
         computersBackground = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/resources/computersBackground.JPG"));
         sportsBackground = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/resources/sportsBackground.JPG"));
+        
+        studentIcon = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/resources/icon.JPG"));
+        professorIcon = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/resources/professorIcon.JPG"));
+        mascotIcon = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/resources/mascotIcon.JPG"));
         
         optReturn = new JButton("Return to Main Menu");     //button to return to IntroScreen
         char1 = new JButton("Nittany Lion");
@@ -76,16 +80,29 @@ public class Options extends JPanel{
         Graphics2D g2d = (Graphics2D) g;
         
         Font f1 = new Font("Serif", Font.PLAIN, 20);
-        g.setFont(f1);
-        g.setColor(Color.WHITE);
-        g.drawString("Choose 1 of 3 Character types:", 50, 100);
      
         if (isTheme1Selected == true)
         {
+            
             g.drawImage(defaultBackground, 0, 0, null);
             g.setFont(f1);
             g.setColor(Color.WHITE);
             g.drawString("Choose 1 of 3 Character types:", 50, 100);
+            g.drawString("Choose 1 of 3 Themes:", 400, 100);
+            
+            if (isStudentSelected == true)
+            {
+               g.drawImage(studentIcon, 300, 100, null);
+            }
+            else if (isMascotSelected == true)
+            {
+                g.drawImage(mascotIcon, 300, 125, null);
+            }
+            else if (isProfessorSelected == true)
+            {
+                g.drawImage(professorIcon, 300, 125, null);
+                
+            }
         }
         
         else if (isTheme2Selected == true)
@@ -94,6 +111,21 @@ public class Options extends JPanel{
             g.setFont(f1);
             g.setColor(Color.WHITE);
             g.drawString("Choose 1 of 3 Character types:", 50, 100);
+            g.drawString("Choose 1 of 3 Themes:", 400, 100);
+            
+            if (isStudentSelected == true)
+            {
+               g.drawImage(studentIcon, 300, 100, null);
+            }
+            else if (isMascotSelected == true)
+            {
+                g.drawImage(mascotIcon, 300, 125, null);
+            }
+            else if (isProfessorSelected == true)
+            {
+                g.drawImage(professorIcon, 300, 125, null);
+                
+            }
         }
         else if (isTheme3Selected == true)
         {
@@ -101,6 +133,21 @@ public class Options extends JPanel{
             g.setFont(f1);
             g.setColor(Color.WHITE);
             g.drawString("Choose 1 of 3 Character types:", 50, 100);
+            g.drawString("Choose 1 of 3 Themes:", 400, 100);
+            
+            if (isStudentSelected == true)
+            {
+               g.drawImage(studentIcon, 300, 100, null);
+            }
+            else if (isMascotSelected == true)
+            {
+                g.drawImage(mascotIcon, 300, 125, null);
+            }
+            else if (isProfessorSelected == true)
+            {
+                g.drawImage(professorIcon, 300, 125, null);
+                
+            }
         }
         else
         {
@@ -108,6 +155,21 @@ public class Options extends JPanel{
             g.setFont(f1);
             g.setColor(Color.WHITE);
             g.drawString("Choose 1 of 3 Character types:", 50, 100);
+            g.drawString("Choose 1 of 3 Themes:", 400, 100);
+            
+            if (isStudentSelected == true)
+            {
+               g.drawImage(studentIcon, 300, 100, null);
+            }
+            else if (isMascotSelected == true)
+            {
+                g.drawImage(mascotIcon, 300, 125, null);
+            }
+            else if (isProfessorSelected == true)
+            {
+                g.drawImage(professorIcon, 300, 125, null);
+                
+            }
         }
         validate();
         repaint();

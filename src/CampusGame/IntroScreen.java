@@ -29,7 +29,7 @@ public class IntroScreen extends JPanel{
         b1 = new JButton("Credits/About");          //Buttons to direct user to the different panels for the game
         b2 = new JButton("Instructions");
         b3 = new JButton("Options");
-        b4 = new JButton("Main Map");
+        b4 = new JButton("Begin Game");
         
         add(b1);
         add(b2);

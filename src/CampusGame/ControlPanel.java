@@ -85,6 +85,9 @@ public class ControlPanel extends JPanel implements ActionListener {
         
         opt = new Options();                    //creates the Options panel
         opt.optReturn.addActionListener(this);  //attach listener to the Return button in the Options panel
+        opt.char1.addActionListener(this);
+        opt.char2.addActionListener(this);
+        opt.char3.addActionListener(this);
         opt.them1.addActionListener(this);
         opt.them2.addActionListener(this);
         opt.them3.addActionListener(this);
@@ -172,6 +175,31 @@ public class ControlPanel extends JPanel implements ActionListener {
             add(intro);
             validate();
             repaint();
+        }
+        if (obj == opt.char1) {
+            opt.isStudentSelected = true;
+            opt.isMascotSelected = false;
+            opt.isProfessorSelected = false;
+            validate();
+            repaint();
+            
+        }
+        if (obj == opt.char2) {
+            opt.isMascotSelected = true;
+            opt.isStudentSelected = false;
+            opt.isProfessorSelected = false;
+            System.out.println("char2 selected");
+            validate();
+            repaint();
+            
+        }
+        if (obj == opt.char3) {
+            opt.isProfessorSelected = true;
+            opt.isStudentSelected = false;
+            opt.isMascotSelected = false;
+            validate();
+            repaint();
+            
         }
         if (obj == opt.them1) {
             opt.isTheme1Selected = true;
