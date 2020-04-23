@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package CampusGame;
 
 import java.awt.Image;
@@ -21,14 +16,15 @@ public class Character {
     private Image image;
 
     public Character() {
+        
         loadImage();
+            
     }
 
- private void loadImage() {
+    public void loadImage() {
         
         ImageIcon ii = new ImageIcon(getClass().getResource("/resources/icon.JPG"));
         image = ii.getImage(); 
-        System.out.println("Character Image Called");
         width = image.getWidth(null);
         height = image.getHeight(null);
     }

@@ -85,9 +85,9 @@ public class ControlPanel extends JPanel implements ActionListener {
         
         opt = new Options();                    //creates the Options panel
         opt.optReturn.addActionListener(this);  //attach listener to the Return button in the Options panel
-        opt.char1.addActionListener(this);
-        opt.char2.addActionListener(this);
-        opt.char3.addActionListener(this);
+        opt.studentButton.addActionListener(this);
+        opt.professorButton.addActionListener(this);
+        opt.nittanyLionButton.addActionListener(this);
         opt.them1.addActionListener(this);
         opt.them2.addActionListener(this);
         opt.them3.addActionListener(this);
@@ -176,27 +176,30 @@ public class ControlPanel extends JPanel implements ActionListener {
             validate();
             repaint();
         }
-        if (obj == opt.char1) {
+        if (obj == opt.studentButton) {
             opt.isStudentSelected = true;
             opt.isMascotSelected = false;
             opt.isProfessorSelected = false;
+            mm.isStudentSelected = true;
             validate();
             repaint();
             
         }
-        if (obj == opt.char2) {
-            opt.isMascotSelected = true;
-            opt.isStudentSelected = false;
-            opt.isProfessorSelected = false;
-            System.out.println("char2 selected");
-            validate();
-            repaint();
+        if (obj == opt.professorButton) {
             
-        }
-        if (obj == opt.char3) {
             opt.isProfessorSelected = true;
             opt.isStudentSelected = false;
-            opt.isMascotSelected = false;
+            opt.isMascotSelected = false; 
+            mm.isProfessorSelected = true;
+            validate();
+            repaint();
+            
+        }
+        if (obj == opt.nittanyLionButton) {
+            opt.isMascotSelected = true;
+            opt.isProfessorSelected = false;
+            opt.isStudentSelected = false;
+            mm.isNittanyLionSelected = true;
             validate();
             repaint();
             

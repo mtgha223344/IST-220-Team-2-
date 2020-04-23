@@ -23,7 +23,7 @@ import javax.swing.JPanel;
 public class Options extends JPanel{
     
     boolean isStudentSelected = true, isMascotSelected = false, isProfessorSelected = false, isTheme1Selected = false, isTheme2Selected = false, isTheme3Selected = false;
-    JButton optReturn, char1, char2, char3, them1, them2, them3;
+    JButton optReturn, studentButton, professorButton, nittanyLionButton, them1, them2, them3;
     private final Image studentIcon, professorIcon, mascotIcon, defaultBackground, computersBackground, sportsBackground;
     
     public Options(){
@@ -35,31 +35,31 @@ public class Options extends JPanel{
         computersBackground = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/resources/computersBackground.JPG"));
         sportsBackground = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/resources/sportsBackground.JPG"));
         
-        studentIcon = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/resources/icon.JPG"));
+        studentIcon = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/resources/student.JPG"));
         professorIcon = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/resources/professorIcon.JPG"));
         mascotIcon = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/resources/mascotIcon.JPG"));
         
         optReturn = new JButton("Return to Main Menu");     //button to return to IntroScreen
-        char1 = new JButton("Nittany Lion");
-        char2 = new JButton("Student");
-        char3 = new JButton("Professor");
+        studentButton = new JButton("Student");
+        professorButton = new JButton("Professor");
+        nittanyLionButton = new JButton("Nitanny Lion");
         
         them1= new JButton("Penn State (Default)");
         them2 = new JButton("Computers");
         them3 = new JButton("Sports");
         
         add(optReturn);
-        add(char1);
-        add(char2);
-        add(char3);
+        add(studentButton);
+        add(professorButton);
+        add(nittanyLionButton);
         add(them1);
         add(them2);
         add(them3);
         
         optReturn.setBounds(new Rectangle(620,480,150,35));
-        char1.setBounds(new Rectangle(150,125,125,25));
-        char2.setBounds(new Rectangle(150,175,125,25));
-        char3.setBounds(new Rectangle(150,225,125,25));
+        studentButton.setBounds(new Rectangle(150,125,125,25));
+        professorButton.setBounds(new Rectangle(150,175,125,25));
+        nittanyLionButton.setBounds(new Rectangle(150,225,125,25));
         
         them1.setBounds(new Rectangle(450,125,125,25));
         them2.setBounds(new Rectangle(450,175,125,25));

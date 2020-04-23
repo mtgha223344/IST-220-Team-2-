@@ -25,9 +25,11 @@ public class MainMap extends JPanel implements ActionListener {
     protected JButton mapReturn, game1, game2, game3, gameOver, universityParkIcon, worldCampusIcon, abingtonIcon, scrantonIcon, duBoisIcon, timerDisplayField, scoreDisplayField;
     private Character character;
     private Student student;
+    private NittanyLion nitannyLion;
+    private Professor professor;
     private Timer timer;
     private int timerDisplay = 0, timerDisplaySeconds = 0, timerDisplayMinutes = 0, timerDisplayHours = 0,DELAY = 10;
-    boolean isTheme2Selected = false, isGameStarted = false, isCharacterSelected = true, hasGame1BeenPlayed = false, hasGame2BeenPlayed = false, hasGame3BeenPlayed = false;
+    boolean isTheme2Selected = false, isGameStarted = false, isStudentSelected = false, isProfessorSelected = false, isNittanyLionSelected = false, hasGame1BeenPlayed = false, hasGame2BeenPlayed = false, hasGame3BeenPlayed = false;
     private String timerDisplayToStringSeconds, timerDisplayToStringMinutes, timerDisplayToStringHours;
     private ImageIcon scranton, universityPark, worldCampus, abington, duBois; 
     private Image background, testBackground;
@@ -107,8 +109,6 @@ public class MainMap extends JPanel implements ActionListener {
         setFocusable(true);
 
         SetUpCharacter();
-        
-
     }
 
     public void startTimer() {
@@ -122,12 +122,11 @@ public class MainMap extends JPanel implements ActionListener {
         timer.stop();
     }
     
+    //creates the characters to be drawn depending on the options selected
     public void SetUpCharacter(){
-        if (isCharacterSelected ==  true)
-        {
-            character = new Character();System.out.println("Character created in Main Map");;
-        }
-        else { student = new Student(); System.out.println("Student created in Main Map");}
+            professor = new Professor();
+            student = new Student(); 
+            nitannyLion = new NittanyLion();
     }
 
     @Override
@@ -150,21 +149,20 @@ public class MainMap extends JPanel implements ActionListener {
 
 
         
-        if (isTheme2Selected == true)
-        {
-             g.drawImage(testBackground, 0, 0, null);
-        }
-        else{
-        g.drawImage(background, 0, 0, null);
-        }
 
-        if (isCharacterSelected == true){
-        g2d.drawImage(character.getImage(), character.getX(),
-                character.getY(), this);
-        }
-        else if (isCharacterSelected == false){
+        g.drawImage(background, 0, 0, null);
+
+        if (isStudentSelected == true){
         g2d.drawImage(student.getImage(), student.getX(),
                 student.getY(), this);
+        }
+        else if (isProfessorSelected  == true){
+        g2d.drawImage(professor.getImage(), professor.getX(),
+                professor.getY(), this);
+        }
+        else if (isNittanyLionSelected == true){
+        g2d.drawImage(nitannyLion.getImage(), nitannyLion.getX(),
+                nitannyLion.getY(), this);
         }
 
     }
@@ -198,11 +196,14 @@ public class MainMap extends JPanel implements ActionListener {
 
     private void step() {
 
-        if (isCharacterSelected == true){
-        character.move();
-        }
-        else if (isCharacterSelected == false){
+        if (isStudentSelected == true){
         student.move();
+        }
+        else if (isProfessorSelected == true){
+        professor.move();
+        }
+        else if (isNittanyLionSelected == true){
+        nitannyLion.move();
         }
         checkCollisions();
         repaint();
@@ -213,28 +214,60 @@ public class MainMap extends JPanel implements ActionListener {
         @Override
         public void keyReleased(KeyEvent e) {
             
-            if (isCharacterSelected == true){
-        character.keyReleased(e);
-        }
-            else if (isCharacterSelected == false){
+            if (isStudentSelected == true){
         student.keyReleased(e);
+        }
+            else if (isProfessorSelected == true){
+        professor.keyReleased(e);
+        }
+            else if (isNittanyLionSelected == true){
+        nitannyLion.keyReleased(e);
         }
         }
 
         @Override
         public void keyPressed(KeyEvent e) {
-            if (isCharacterSelected == true){
-        character.keyPressed(e);
-        }
-            else if (isCharacterSelected == false){
+            if (isStudentSelected == true){
         student.keyPressed(e);
         }
-        }
+            else if (isProfessorSelected == true){
+        professor.keyPressed(e);
+            }
+            else if (isNittanyLionSelected == true){
+        nitannyLion.keyPressed(e);
+                    }
+    }
     }
 
      public void checkCollisions() {
 
-        Rectangle r3 = character.getBounds();
+        if(isStudentSelected == true){
+        Rectangle r3 = student.getBounds();
+
+        Rectangle r2 = universityParkIcon.getBounds();
+        Rectangle r4 = worldCampusIcon.getBounds();
+        Rectangle r5 = scrantonIcon.getBounds();
+
+        if (r3.intersects(r2) && hasGame1BeenPlayed == false) {
+            game1.setVisible(true);
+        } else if (r3.intersects(r4) && hasGame2BeenPlayed == false)
+        {
+            game2.setVisible(true);
+        }
+        else if (r3.intersects(r5) && hasGame3BeenPlayed == false)
+        {
+            game3.setVisible(true);
+        }
+        else
+        {
+            game1.setVisible(false);
+            game2.setVisible(false);
+            game3.setVisible(false);
+        } 
+        }
+        else if (isProfessorSelected == true){
+            
+        Rectangle r3 = professor.getBounds();
 
         Rectangle r2 = universityParkIcon.getBounds();
         Rectangle r4 = worldCampusIcon.getBounds();
@@ -256,7 +289,32 @@ public class MainMap extends JPanel implements ActionListener {
             game2.setVisible(false);
             game3.setVisible(false);
         }
-    }
+        }
+        else if (isNittanyLionSelected == true){
+            
+        Rectangle r3 = nitannyLion.getBounds();
 
+        Rectangle r2 = universityParkIcon.getBounds();
+        Rectangle r4 = worldCampusIcon.getBounds();
+        Rectangle r5 = scrantonIcon.getBounds();
+
+        if (r3.intersects(r2) && hasGame1BeenPlayed == false) {
+            game1.setVisible(true);
+        } else if (r3.intersects(r4) && hasGame2BeenPlayed == false)
+        {
+            game2.setVisible(true);
+        }
+        else if (r3.intersects(r5) && hasGame3BeenPlayed == false)
+        {
+            game3.setVisible(true);
+        }
+        else
+        {
+            game1.setVisible(false);
+            game2.setVisible(false);
+            game3.setVisible(false);
+        }
+        }
+    }
 
 }

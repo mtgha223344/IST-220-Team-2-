@@ -106,8 +106,8 @@ public class Game3 extends JPanel implements ActionListener {
 
         Graphics2D g2d = (Graphics2D) g;
 
-        g2d.drawImage(character.getImage(), character.getX(),
-                character.getY(), this);
+        //g2d.drawImage(character.getImage(), character.getX(),
+                //character.getY(), this);
     }
 
     @Override
@@ -169,7 +169,7 @@ public class Game3 extends JPanel implements ActionListener {
     public void checkCollisions()
     {
 
-        Rectangle rc = character.getBounds();
+        //Rectangle rc = character.getBounds();
         Rectangle r1 = gp1.getBounds();
         Rectangle r2 = gp2.getBounds();
         Rectangle r3 = gp3.getBounds();
@@ -179,50 +179,50 @@ public class Game3 extends JPanel implements ActionListener {
         Rectangle r7 = bomb2.getBounds();
         Rectangle r8 = bomb3.getBounds();
 
-        if (rc.intersects(r1))
+      //  if (rc.intersects(r1))
         {
             remove(gp1);
             gp1.setBounds(0, 0, 0, 0);
             score = score + 1;
 
         }
-        if (rc.intersects(r2))
+       // if (rc.intersects(r2))
         {
             remove(gp2);
             gp2.setBounds(0, 0, 0, 0);
             score = score + 1;
         }
-        if (rc.intersects(r3))
+       // if (rc.intersects(r3))
         {
             remove(gp3);
             gp3.setBounds(0, 0, 0, 0); 
             score = score + 1;
         }
-        if (rc.intersects(r4))
+        //if (rc.intersects(r4))
         {   
             remove(gp4);
             gp4.setBounds(0, 0, 0, 0);
             score = score + 1;
         }
-        if (rc.intersects(r5))
+        //if (rc.intersects(r5))
         {
             gp5.setBounds(0, 0, 0, 0);
             remove(gp5);
             score = score + 1;
         }
-        if (rc.intersects(r6))
+        //if (rc.intersects(r6))
         {
             bomb1.Y = 0;
             bomb1.createBomb();
             score = score - 2;
         }
-        if (rc.intersects(r7))
+        //if (rc.intersects(r7))
         {
             bomb2.Y = 0;
             bomb2.createBomb();
             score = score - 2;
         }
-        if (rc.intersects(r8))
+        //if (rc.intersects(r8))
         {
             bomb3.Y = 0;
             bomb3.createBomb();
