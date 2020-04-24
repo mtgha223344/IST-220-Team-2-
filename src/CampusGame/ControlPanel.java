@@ -94,9 +94,11 @@ public class ControlPanel extends JPanel implements ActionListener {
         
         mm = new MainMap();
         mm.mapReturn.addActionListener(this);   //attach listener to the Return button in the MainMap panel  
-        mm.game1.addActionListener(this);
-        mm.game2.addActionListener(this);
-        mm.game3.addActionListener(this);
+        mm.universityParkButton.addActionListener(this);
+        mm.worldCampusButton.addActionListener(this);
+        mm.scrantonButton.addActionListener(this);
+        mm.duBoisButton.addActionListener(this);
+        mm.abingtonButton.addActionListener(this);
         
         gm1 = new Game1();
         gm1.returnToMainMap.addActionListener(this);         //attach listener to the Game1 button in the Game1 panel
@@ -116,12 +118,16 @@ public class ControlPanel extends JPanel implements ActionListener {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         Object obj = e.getSource();
 
-        if (mm.gamesPlayed == 3) //test Game Over Functionality here. Eventually should respond to actual game over event. 
+        if (mm.gamesPlayed == 1) //test Game Over Functionality here. Eventually should respond to actual game over event. 
         {
 
             //Here there is no Action Event object so the Control Panel continually queries for the game over condition
             //Will probably respond to a variable numberOfGamesPlayed which will iterate each time a game button is clicked
             GameOver();
+            gameOver.informedTimerHours = mm.timerDisplayToStringHours;
+            gameOver.informedTimerMinutes = mm.timerDisplayToStringMinutes;
+            gameOver.informedTimerSeconds = mm.timerDisplayToStringSeconds;
+            gameOver.informedGameScore = gameScoreToString;
             removeAll();
             add(gameOver);
             validate();
@@ -234,29 +240,48 @@ public class ControlPanel extends JPanel implements ActionListener {
             validate();
             repaint();
         }
-        if (obj == mm.game1) //adds the Game1 panel when Game1 button is pressed in the MainMap panel
+        if (obj == mm.universityParkButton) //adds the Game1 panel when Game1 button is pressed in the MainMap panel
         {
             mm.setVisible(false);
             CreateGame1();
-            mm.hasGame1BeenPlayed = true;
+            mm.hasUniversityParkBeenPlayed = true;
             mm.gamesPlayed++;
             validate();
             repaint();
         }
-        if (obj == mm.game2) //adds the Game2 panel when Game1 button is pressed in the MainMap panel
+        if (obj == mm.worldCampusButton) //adds the Game2 panel when Game1 button is pressed in the MainMap panel
         {
             mm.setVisible(false);
             CreateGame2();
-            mm.hasGame2BeenPlayed = true;
+            mm.hasWorldCampusBeenPlayed = true;
             mm.gamesPlayed++;
             validate();
             repaint();
         }
-        if (obj == mm.game3) //adds the Game3 panel when Game1 button is pressed in the MainMap panel
+        if (obj == mm.scrantonButton) //adds the Game3 panel when Game1 button is pressed in the MainMap panel
         {
             mm.setVisible(false);
             CreateGame3();
-            mm.hasGame3BeenPlayed = true;
+            mm.hasScrantonBeenPlayed = true;
+            mm.gamesPlayed++;
+            validate();
+            repaint();
+        }
+        
+        if (obj == mm.abingtonButton) //adds the Game3 panel when Game1 button is pressed in the MainMap panel
+        {
+            mm.setVisible(false);
+            CreateGame3();
+            mm.hasAbingtonBeenPlayed = true;
+            mm.gamesPlayed++;
+            validate();
+            repaint();
+        }
+        if (obj == mm.duBoisButton) //adds the Game3 panel when Game1 button is pressed in the MainMap panel
+        {
+            mm.setVisible(false);
+            CreateGame2();
+            mm.hasduBoisBeenPlayed = true;
             mm.gamesPlayed++;
             validate();
             repaint();
