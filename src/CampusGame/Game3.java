@@ -179,14 +179,14 @@ public class Game3 extends JPanel implements ActionListener {
         Rectangle r7 = bomb2.getBounds();
         Rectangle r8 = bomb3.getBounds();
 
-      //  if (rc.intersects(r1))
+        //if (rc.intersects(r1))
         {
             remove(gp1);
             gp1.setBounds(0, 0, 0, 0);
             score = score + 1;
 
         }
-       // if (rc.intersects(r2))
+        //if (rc.intersects(r2))
         {
             remove(gp2);
             gp2.setBounds(0, 0, 0, 0);
@@ -198,13 +198,13 @@ public class Game3 extends JPanel implements ActionListener {
             gp3.setBounds(0, 0, 0, 0); 
             score = score + 1;
         }
-        //if (rc.intersects(r4))
+       // if (rc.intersects(r4))
         {   
             remove(gp4);
             gp4.setBounds(0, 0, 0, 0);
             score = score + 1;
         }
-        //if (rc.intersects(r5))
+       // if (rc.intersects(r5))
         {
             gp5.setBounds(0, 0, 0, 0);
             remove(gp5);

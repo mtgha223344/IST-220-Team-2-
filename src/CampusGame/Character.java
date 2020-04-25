@@ -14,19 +14,22 @@ public class Character {
     private int width;
     private int height;
     private Image image;
-
+    Options option;
+    static boolean isStudentSelected = true, isProfessorSelected, isMascotSelected;
+   
+    
     public Character() {
         
-        loadImage();
-            
+        loadImage();  
     }
 
     public void loadImage() {
         
-        ImageIcon ii = new ImageIcon(getClass().getResource("/resources/icon.JPG"));
+        ImageIcon ii = new ImageIcon(getClass().getResource("/resources/Student.JPG"));
         image = ii.getImage(); 
         width = image.getWidth(null);
         height = image.getHeight(null);
+        
     }
 
     public void move() {
@@ -65,27 +68,59 @@ public class Character {
     }
 
     public void keyPressed(KeyEvent e) {
-
         
         int key = e.getKeyCode();
-
-        if (key == KeyEvent.VK_LEFT) {
+        
+        //Check Left bound movement speed
+        if (key == KeyEvent.VK_LEFT && isProfessorSelected == true) {
+            dx = -1;
+            System.out.println("Professor Left");
+        }
+        else if (key == KeyEvent.VK_LEFT && isStudentSelected == true){
+           dx = -3;
+           System.out.println("Student Left");
+        }
+        else if (key == KeyEvent.VK_LEFT && isMascotSelected == true){
             dx = -2;
+            System.out.println("Mascot Left");
+        }  
+        
+        //Check right bound movement speed
+        if (key == KeyEvent.VK_RIGHT && isProfessorSelected == true) {
+            dx = 1;
         }
-
-        if (key == KeyEvent.VK_RIGHT) {
+        if (key == KeyEvent.VK_RIGHT && isStudentSelected == true) {
+            dx = 3;
+        }
+        if (key == KeyEvent.VK_RIGHT && isMascotSelected == true) {
             dx = 2;
+        }  
+        //Check upward movement speed
+        if (key == KeyEvent.VK_UP && isProfessorSelected == true) {
+            dy = -1;
         }
-
-        if (key == KeyEvent.VK_UP) {
-            dy = -2;
+        if (key == KeyEvent.VK_UP && isStudentSelected == true) {
+            dy = -3;
         }
+        if (key == KeyEvent.VK_UP && isMascotSelected == true) {
+            dy =-2;
+        }
+       
 
-        if (key == KeyEvent.VK_DOWN) {
+       
+        //Check downward movement speed
+        if (key == KeyEvent.VK_DOWN && isProfessorSelected == true) {
+            dy = 1;
+        }
+        if (key == KeyEvent.VK_DOWN && isStudentSelected == true) {
+            dy =3;
+        }
+        if (key == KeyEvent.VK_DOWN && isMascotSelected == true) {
             dy = 2;
         }
+        
     }
-
+    //Stop movement
     public void keyReleased(KeyEvent e) {
         
         int key = e.getKeyCode();

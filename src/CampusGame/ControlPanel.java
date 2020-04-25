@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 
 /**
  **The Control Panel will listen to events and based on those events, it will
@@ -22,9 +23,11 @@ public class ControlPanel extends JPanel implements ActionListener {
     Game2 gm2;
     Game3 gm3;
     GameOver gameOver;
+    Character character;
     JButton goTo1, goTo2;
     int gameScore, gamesPlayed = 0; //This is the overall game score.
     String gameScoreToString; //Used for printing the Game Score to the Display in the Main Map
+
 
     public ControlPanel() {
         super();
@@ -111,6 +114,8 @@ public class ControlPanel extends JPanel implements ActionListener {
         
         gameOver = new GameOver();
         gameOver.restart.addActionListener(this);
+        
+        character = new Character();
     }
 
     @Override
@@ -118,7 +123,7 @@ public class ControlPanel extends JPanel implements ActionListener {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         Object obj = e.getSource();
 
-        if (mm.gamesPlayed == 1) //test Game Over Functionality here. Eventually should respond to actual game over event. 
+        if (mm.gamesPlayed == 5) //test Game Over Functionality here. Eventually should respond to actual game over event. 
         {
 
             //Here there is no Action Event object so the Control Panel continually queries for the game over condition
@@ -183,10 +188,16 @@ public class ControlPanel extends JPanel implements ActionListener {
             repaint();
         }
         if (obj == opt.studentButton) {
+            
             opt.isStudentSelected = true;
             opt.isMascotSelected = false;
             opt.isProfessorSelected = false;
+           
             mm.isStudentSelected = true;
+            
+            Character.isStudentSelected = true;
+            Character.isProfessorSelected = false;
+            Character.isMascotSelected = false;
             validate();
             repaint();
             
@@ -196,16 +207,27 @@ public class ControlPanel extends JPanel implements ActionListener {
             opt.isProfessorSelected = true;
             opt.isStudentSelected = false;
             opt.isMascotSelected = false; 
+            
             mm.isProfessorSelected = true;
+            
+            Character.isProfessorSelected = true;
+            Character.isStudentSelected = false;
+            Character.isMascotSelected = false;
             validate();
             repaint();
             
         }
         if (obj == opt.nittanyLionButton) {
+            
             opt.isMascotSelected = true;
             opt.isProfessorSelected = false;
             opt.isStudentSelected = false;
+            
             mm.isNittanyLionSelected = true;
+            
+            Character.isProfessorSelected = false;
+            Character.isStudentSelected = false;
+            Character.isMascotSelected = true;
             validate();
             repaint();
             
