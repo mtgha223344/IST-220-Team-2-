@@ -164,6 +164,10 @@ public class MainMap extends JPanel implements ActionListener {
         g2d.drawImage(nitannyLion.getImage(), nitannyLion.getX(),
                 nitannyLion.getY(), this);
         }
+        else{
+           g2d.drawImage(nitannyLion.getImage(), nitannyLion.getX(),
+                nitannyLion.getY(), this); 
+        }
 
     }
 

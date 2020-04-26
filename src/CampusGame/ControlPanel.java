@@ -181,6 +181,9 @@ public class ControlPanel extends JPanel implements ActionListener {
             opt.isMascotSelected = false;
             opt.isProfessorSelected = false;
             mm.isStudentSelected = true;
+            gm3.isStudentSelected = true;
+            gm3.isMascotSelected = false;
+            gm3.isProfessorSelected = false;
             validate();
             repaint();
             
@@ -191,6 +194,9 @@ public class ControlPanel extends JPanel implements ActionListener {
             opt.isStudentSelected = false;
             opt.isMascotSelected = false; 
             mm.isProfessorSelected = true;
+            gm3.isProfessorSelected = true;
+            gm3.isMascotSelected = false;
+            gm3.isStudentSelected = false;
             validate();
             repaint();
             
@@ -200,6 +206,9 @@ public class ControlPanel extends JPanel implements ActionListener {
             opt.isProfessorSelected = false;
             opt.isStudentSelected = false;
             mm.isNittanyLionSelected = true;
+            gm3.isMascotSelected = true;
+            gm3.isStudentSelected = false;
+            gm3.isProfessorSelected = false;
             validate();
             repaint();
             
@@ -208,6 +217,9 @@ public class ControlPanel extends JPanel implements ActionListener {
             opt.isTheme1Selected = true;
             opt.isTheme2Selected = false;
             opt.isTheme3Selected = false;
+            gm3.isTheme1Selected = true;
+            gm3.isTheme2Selected = false;
+            gm3.isTheme3Selected = false;
             validate();
             repaint();
             
@@ -216,7 +228,9 @@ public class ControlPanel extends JPanel implements ActionListener {
             opt.isTheme2Selected = true;
             opt.isTheme1Selected = false;
             opt.isTheme3Selected = false;
-            
+            gm3.isTheme2Selected = true;
+            gm3.isTheme1Selected = false;
+            gm3.isTheme3Selected = false;
             validate();
             repaint();   
         }
@@ -224,7 +238,9 @@ public class ControlPanel extends JPanel implements ActionListener {
             opt.isTheme3Selected = true;
             opt.isTheme2Selected = false;
             opt.isTheme1Selected = false;
-            
+            gm3.isTheme3Selected = true;
+            gm3.isTheme1Selected = false;
+            gm3.isTheme2Selected = false;
             validate();
             repaint();   
         }
@@ -255,7 +271,7 @@ public class ControlPanel extends JPanel implements ActionListener {
         if (obj == mm.game3) //adds the Game3 panel when Game1 button is pressed in the MainMap panel
         {
             mm.setVisible(false);
-            CreateGame3();
+            add(gm3);
             mm.hasGame3BeenPlayed = true;
             mm.gamesPlayed++;
             validate();
