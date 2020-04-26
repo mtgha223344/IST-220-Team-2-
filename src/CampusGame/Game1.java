@@ -24,8 +24,9 @@ public class Game1 extends JPanel implements MouseListener, KeyListener, ActionL
     int BButtonSize = 50;
     int CButtonSize = 100;
     int DButtonSize = 50;
-    boolean gameStart = false;
+    boolean gameStart = false, istheme1Selected = false, istheme2Selected = false, istheme3Selected = false;
     String scoreToString;
+    private Image theme1Background, theme2Background, theme3Background;
     
     public Game1(){
         super();
@@ -52,20 +53,51 @@ public class Game1 extends JPanel implements MouseListener, KeyListener, ActionL
         addKeyListener(this);
         delay = 1000;
         tim = new Timer(delay, this);
+        
+        theme1Background = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/resources/pennStateBackground.JPG"));
+        theme2Background = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/resources/computersBackground.JPG"));
+        theme3Background = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/resources/sportsBackground.JPG"));
     }
 
     @Override
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
-        Font f1 = new Font("Serif", Font.BOLD, 16);
+        Font f1 = new Font("Serif", Font.BOLD, 20);
         g.setFont(f1);
-        g.setColor(Color.white);
+        g.setColor(Color.red);
+        doDrawing(g);
         g.drawString("Game 1", 25, 25);
         g.drawString("Score = " + score, 10, 550);
         g.drawString("Press the ENTER key to to begin", 25, 50);
         g.drawString("You have 60 seconds to click the button as many times as possible to generate the highest score", 25, 75);
         
+    }
+    
+    private void doDrawing(Graphics g) {
+
+        Graphics2D g2d = (Graphics2D) g;
+
+        if (istheme1Selected == true) {
+            g.drawImage(theme1Background, 0, 0, null);
+            g.drawString("Game 1", 25, 25);
+        g.drawString("Score = " + score, 10, 550);
+        } else if (istheme2Selected == true) {
+            g.drawImage(theme2Background, 0, 0, null);
+            g.drawString("Game 1", 25, 25);
+        g.drawString("Score = " + score, 10, 550);
+        } else if (istheme3Selected == true) {
+            g.drawImage(theme3Background, 0, 0, null);
+            g.drawString("Game 1", 25, 25);
+        g.drawString("Score = " + score, 10, 550);
+        } else {
+            g.drawImage(theme1Background, 0, 0, null);
+           g.drawString("Game 1", 25, 25);
+        g.drawString("Score = " + score, 10, 550);
+        }
+        validate();
+        repaint();
+
     }
     
     @Override

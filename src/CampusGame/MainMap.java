@@ -92,6 +92,7 @@ public class MainMap extends JPanel implements ActionListener {
 
         //Placing the icons in the main map
         mapReturn.setBounds(new Rectangle(450, 525, 150, 35));
+        mapReturn.setVisible(false);
         universityParkIcon.setBounds(new Rectangle(334, 250, 50, 50));
         worldCampusIcon.setBounds(new Rectangle(300, 80, 125, 50));
         abingtonIcon.setBounds(new Rectangle(720, 388, 50, 50));
