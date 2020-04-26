@@ -203,10 +203,7 @@ public class ControlPanel extends JPanel implements ActionListener {
             opt.isProfessorSelected = false;
            
             mm.isStudentSelected = true;
-            
-            Character.isStudentSelected = true;
-            Character.isProfessorSelected = false;
-            Character.isMascotSelected = false;
+
             
             gm3.isMascotSelected = false;
             gm3.isProfessorSelected = false;
@@ -223,11 +220,7 @@ public class ControlPanel extends JPanel implements ActionListener {
             opt.isMascotSelected = false; 
             
             mm.isProfessorSelected = true;
-            
-            Character.isProfessorSelected = true;
-            Character.isStudentSelected = false;
-            Character.isMascotSelected = false;
-            
+   
             gm3.isMascotSelected = false;
             gm3.isProfessorSelected = true;
             gm3.isStudentSelected = false;
@@ -243,11 +236,7 @@ public class ControlPanel extends JPanel implements ActionListener {
             opt.isStudentSelected = false;
             
             mm.isNittanyLionSelected = true;
-            
-            Character.isProfessorSelected = false;
-            Character.isStudentSelected = false;
-            Character.isMascotSelected = true;
-            
+
             gm3.isMascotSelected = true;
             gm3.isProfessorSelected = false;
             gm3.isStudentSelected = false;

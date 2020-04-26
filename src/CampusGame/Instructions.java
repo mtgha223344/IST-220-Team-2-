@@ -33,9 +33,10 @@ public class Instructions extends JPanel {
         Font f1 = new Font("Serif", Font.BOLD, 16);
         g.setFont(f1);
         g.setColor(Color.BLUE);
-        g.drawString("1. Move your character around a map of Pennsylvania to 5 different campuses", 25, 100);
-        g.drawString("2. At each campus, select a challenge - Multiple Choice, Puzzle, or Game", 25, 130);
-        g.drawString("3. Collect Points at each location", 25, 160);
+        g.drawString("1. Move your character around a map of Pennsylvania with the arrow keys", 25, 100);
+        g.drawString("2. There are 5 Penn State Canmpuses. Visit each campus to play a game", 25, 130);
+        g.drawString("3. Play the game and collect points at each location", 25, 160);
         g.drawString("4. After 5 campus visits, the game will be over and your character's score will be shown", 25, 190);
+        g.drawString("5. Make sure to hurry, as you're also racing the clock", 25, 220);
     }
 }

@@ -2,6 +2,7 @@ package CampusGame;
 
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
 public class Professor extends Character {
@@ -33,6 +34,28 @@ public class Professor extends Character {
     @Override
     public Rectangle getBounds() {
         return new Rectangle(super.getX(), super.getY(), width, height);
+    }
+    
+        @Override
+        public void keyPressed(KeyEvent e) {
+        
+        int key = e.getKeyCode();
+        
+        if (key == KeyEvent.VK_LEFT){
+           super.dx = -1;
+        }
+        
+        if (key == KeyEvent.VK_RIGHT) {
+            super.dx = 1;
+        }
+        //Check upward movement speed
+        if (key == KeyEvent.VK_UP) {
+            super.dy = -1;
+        }
+
+        if (key == KeyEvent.VK_DOWN) {
+           super.dy =1;
+        }
     }
 
 }

@@ -7,6 +7,7 @@ package CampusGame;
 
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
 
@@ -41,4 +42,26 @@ public class Student extends Character {
         return new Rectangle(super.getX(), super.getY(), width, height);
     }
     
+    @Override
+        public void keyPressed(KeyEvent e) {
+        
+        int key = e.getKeyCode();
+        
+        if (key == KeyEvent.VK_LEFT){
+           super.dx = -3;
+           System.out.println("Student Left");
+        }
+        
+        if (key == KeyEvent.VK_RIGHT) {
+            super.dx = 3;
+        }
+        //Check upward movement speed
+        if (key == KeyEvent.VK_UP) {
+            super.dy = -3;
+        }
+
+        if (key == KeyEvent.VK_DOWN) {
+           super.dy =3;
+        }
+    }
 }

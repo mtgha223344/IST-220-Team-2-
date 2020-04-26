@@ -70,7 +70,7 @@ public class Game1 extends JPanel implements MouseListener, KeyListener, ActionL
         g.drawString("Game 1", 25, 25);
         g.drawString("Score = " + score, 10, 550);
         g.drawString("Press the ENTER key to to begin", 25, 50);
-        g.drawString("You have 60 seconds to click the button as many times as possible to generate the highest score", 25, 75);
+        g.drawString("You have 60 seconds to click the button as many times as possible", 25, 75);
         
     }
     

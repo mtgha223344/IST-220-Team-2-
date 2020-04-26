@@ -158,7 +158,6 @@ public class MainMap extends JPanel implements ActionListener {
         Font f1 = new Font("Serif", Font.BOLD, 20);
         g.setFont(f1);
         g.setColor(Color.BLUE);
-        g.drawString("Main Map", 50, 100);
     }
 
     private void doDrawing(Graphics g) {

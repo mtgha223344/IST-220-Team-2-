@@ -38,7 +38,6 @@ public class CreditsAndAbout extends JPanel {
         g.drawString("Brandon Gold", 50, 160);
         g.drawString("Bryce Livingston", 50, 190);
         g.drawString("Brandon Pollock", 50, 220);
-        g.drawString("Christopher Sirianni", 50, 250);
     }
     
 }
